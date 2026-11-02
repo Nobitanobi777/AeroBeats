@@ -1,7 +1,12 @@
 <!DOCTYPE html><html lang="hi"><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="description" content="AeroBeats is your personal music player. Add and play music files stored on your device.">
+<meta name="application-name" content="AeroBeats">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
+<link rel="apple-touch-icon" href="./icons/icon-192.png">
 <meta name="theme-color" content="#0f0c29"><meta name="mobile-web-app-capable" content="yes">
-<title>My Music</title>
+<title>AeroBeats Music Player</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}
 :root{--p:#a855f7;--bl:12px;--t2:rgba(255,255,255,.74);--e:cubic-bezier(.2,.9,.3,1);--s:cubic-bezier(.34,1.35,.5,1)}
@@ -815,5 +820,15 @@ for(let i=0;i<12;i++){
 apply();
 regMS();
 boot();
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(err => {
+      console.warn("AeroBeats offline support could not be enabled:", err);
+    });
+  });
+}
 </script>
 </body></html>
